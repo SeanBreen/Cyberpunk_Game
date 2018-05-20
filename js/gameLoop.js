@@ -3,14 +3,19 @@ function update(progress) {
 }
 
 function draw() {
-  // Draw the state of the world
+  //Clear screen of leftover sprites
+  clearScreen();
+  //Draw everything
+  drawLevel(level);
+  drawRoads(roads);
+  drawMenu();
 }
 
 function loop(timestamp) {
   var progress = timestamp - lastRender;
 
   update(progress);
-  drawLevel(level);
+  draw();
 
   lastRender = timestamp;
   window.requestAnimationFrame(loop);
