@@ -59,6 +59,7 @@ function getTextureName(no,type) {
   //Get the type of texture
   switch(type) {
     case "l":
+    case 0:
       //Get the number associated with the specific texture
       switch(no) {
         case 0:
@@ -70,6 +71,7 @@ function getTextureName(no,type) {
       }
       break;
     case "r":
+    case 1:
       switch(no) {
         case 1:
           return "roads/roadX";
@@ -83,6 +85,7 @@ function getTextureName(no,type) {
       }
       break;
     case "c":
+    case 2:
       switch(no) {
         case 1:
           return "sprites/vehicles/tempCar";
