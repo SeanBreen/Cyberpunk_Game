@@ -9,6 +9,7 @@ function draw() {
   drawLevel(level);
   drawRoads(roads);
   drawMenu();
+  drawPlayer();
 }
 
 function loop(timestamp) {

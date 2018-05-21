@@ -4,6 +4,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var ctx = canvas.getContext("2d");
 var mouse = [0,0];
+canvas.addEventListener("click", click,false);
 canvas.addEventListener("mousemove", function(ev) {
     mouse = [ev.clientX,ev.clientY];
 });
