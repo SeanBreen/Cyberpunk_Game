@@ -90,7 +90,7 @@ function drawHighlights() {
   }
   for (i=0;i<subMenuButtons.length;i++) {
     //Check bounding box for the buttons - could implementing a quadtree make this faster in a larger application?
-    if (mouse[0] >= subMenuButtons[i].pos[0] && mouse[0] <= (subMenuButtons[i].pos[0]+subMenuButtons[i].width) && mouse[1] >= subMenuButtons[i].pos[1] && mouse[1] <= (subMenuButtons[i].pos[1]+subMenuButtons[i].height+8)) {
+    if (mouse[0] >= subMenuButtons[i].pos[0] && mouse[0] <= (subMenuButtons[i].pos[0]+subMenuButtons[i].width) && mouse[1] >= subMenuButtons[i].pos[1] && mouse[1] <= (subMenuButtons[i].pos[1]+subMenuButtons[i].height)) {
       //Change colour of the text
       subMenuButtons[i].style[2] = "#f442e8";
     }
