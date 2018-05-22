@@ -18,6 +18,7 @@ function drawMenu() {
   drawHighlights();
   drawActiveSubMenu(activeSubMenu);
   drawBalanceBox();
+  drawWorldtime();
 }
 
 
@@ -98,7 +99,7 @@ function drawHighlights() {
 }
 
 //Sub menu item constructor
-var subMenuItem = function(name,text,price,menu,objName,cost,imageSrc) {
+var subMenuItem = function(name,text,price,menu,objName,imageSrc) {
   this.pos = [0,0];
   this.name = name;
   this.text = text;
@@ -108,7 +109,6 @@ var subMenuItem = function(name,text,price,menu,objName,cost,imageSrc) {
   this.height = 100;
   this.menu = menu;
   this.objName = objName;
-  this.cost = cost;
 
   this.image = new Image();
   this.subMenuButton;
@@ -161,4 +161,14 @@ function drawBalanceBox() {
   ctx.fillStyle = "#fff";
   ctx.font = "30px Orbitron";
   ctx.fillText("Balance: "+player.money+" credits",(window.innerWidth/2)-190,window.innerHeight-25);
+}
+
+//Draw world time
+function drawWorldtime() {
+  ctx.fillStyle = "#f442e8";
+  ctx.fillRect((window.innerWidth/2)-60,0,120,50);
+  ctx.fillStyle = "#fff";
+  ctx.textAlign="left";
+  ctx.font = "30px Orbitron";
+  ctx.fillText(displayHours+":"+displayMinutes,(window.innerWidth/2)-53,25);
 }

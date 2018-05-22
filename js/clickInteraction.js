@@ -17,10 +17,10 @@ function checkClickButtons() {
   //   }
   // }
   for (i=0;i<subMenuButtons.length;i++) {
-    //Check bounding box for the buttons and make sure the one clicked is in the active menu
-    if (mouse[0] >= subMenuButtons[i].pos[0] && mouse[0] <= (subMenuButtons[i].pos[0]+subMenuButtons[i].width) && mouse[1] >= subMenuButtons[i].pos[1] && mouse[1] <= (subMenuButtons[i].pos[1]+subMenuButtons[i].height) && subMenuButtons[i].menu == activeSubMenu) {
+    //Check bounding box for the buttons and make sure the one clicked is in the active menu and also if it is within the player's budget
+    if (mouse[0] >= subMenuButtons[i].pos[0] && mouse[0] <= (subMenuButtons[i].pos[0]+subMenuButtons[i].width) && mouse[1] >= subMenuButtons[i].pos[1] && mouse[1] <= (subMenuButtons[i].pos[1]+subMenuButtons[i].height) && subMenuButtons[i].menu == activeSubMenu && canBuy(subMenuItems[subMenuButtons[i].subMenu].price)) {
 
-      player.holding = [subMenuItems[subMenuButtons[i].subMenu].cost,subMenuItems[subMenuButtons[i].subMenu].objName[0],subMenuItems[subMenuButtons[i].subMenu].objName[1]];
+      player.holding = [subMenuItems[subMenuButtons[i].subMenu].price,subMenuItems[subMenuButtons[i].subMenu].objName[0],subMenuItems[subMenuButtons[i].subMenu].objName[1]];
       player.image.src = "assets/"+getTextureName(player.holding[1],player.holding[2])+".png";
 
     } else {
