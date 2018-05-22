@@ -20,14 +20,14 @@ function checkClickButtons() {
     //Check bounding box for the buttons and make sure the one clicked is in the active menu
     if (mouse[0] >= subMenuButtons[i].pos[0] && mouse[0] <= (subMenuButtons[i].pos[0]+subMenuButtons[i].width) && mouse[1] >= subMenuButtons[i].pos[1] && mouse[1] <= (subMenuButtons[i].pos[1]+subMenuButtons[i].height) && subMenuButtons[i].menu == activeSubMenu) {
 
-      player.holdingCost = subMenuItems[subMenuButtons[i].subMenu].cost;
-      player.image.src = "assets/"+getTextureName(subMenuItems[subMenuButtons[i].subMenu].objName[0],subMenuItems[subMenuButtons[i].subMenu].objName[1])+".png";
-      //player.money -= subMenuItems[subMenuButtons[i].subMenu].cost;
+      player.holding = [subMenuItems[subMenuButtons[i].subMenu].cost,subMenuItems[subMenuButtons[i].subMenu].objName[0],subMenuItems[subMenuButtons[i].subMenu].objName[1]];
+      player.image.src = "assets/"+getTextureName(player.holding[1],player.holding[2])+".png";
+
     } else {
+      //If within grid and tile isn't locked
       if (withinGrid() && getCurrentTile()[0] != 0) {
-        player.money -= player.holdingCost;
-        //TODO reset only if right click
-        player.holdingCost = 0;
+        player.money -= player.holding[0];
+        player.holding = [0,0,0];
         player.image.src = "";
       } else {
       }

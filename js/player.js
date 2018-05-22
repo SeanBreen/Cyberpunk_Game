@@ -1,6 +1,6 @@
 var Player = function() {
   this.money = 1000;
-  this.holdingCost = 0;
+  this.holding = 0;
   this.score = 0;
   this.image = new Image();
   this.image.src = "";

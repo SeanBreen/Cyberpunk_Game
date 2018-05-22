@@ -109,7 +109,7 @@ var subMenuItem = function(name,text,price,menu,objName,cost,imageSrc) {
   this.menu = menu;
   this.objName = objName;
   this.cost = cost;
-  
+
   this.image = new Image();
   this.subMenuButton;
   if (imageSrc == "" || imageSrc == null) {
@@ -160,5 +160,5 @@ function drawBalanceBox() {
   ctx.fillRect((window.innerWidth/2)-200,window.innerHeight-50,400,100);
   ctx.fillStyle = "#fff";
   ctx.font = "30px Orbitron";
-  ctx.fillText("Balance: "+player.money,(window.innerWidth/2)-190,window.innerHeight-25);
+  ctx.fillText("Balance: "+player.money+" credits",(window.innerWidth/2)-190,window.innerHeight-25);
 }
