@@ -92,5 +92,14 @@ function getTextureName(no,type) {
           return "sprites/vehicles/tempCar";
           break;
       }
+      break;
+    case "b":
+    case 3:
+      switch(no) {
+        case 1:
+          return "sprites/buildings/houses/low";
+          break;
+      }
+      break;
   }
 }
