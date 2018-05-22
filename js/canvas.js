@@ -55,6 +55,25 @@ function drawRoads(roads) {
   }
 }
 
+//Draw the buildings for the game
+function drawBuildings(buildings) {
+  var startX = initialStartX;
+  var startY = initialStartY;
+  for (i=0;i<buildings.length;i++) {
+    if (i%10 === 0 && i!=0) {
+      startY+=tileSize;
+      startX = initialStartX;
+    }
+    if (buildings[i] !=0){
+      var textureName = getTextureName(buildings[i],"b");
+      var s = new Sprite(textureName);
+      s.draw(startX,startY,tileSize,tileSize);
+      s.pos=[startX,startY];
+    }
+    startX+=tileSize;
+  }
+}
+
 //Returns the texture name from a given integer and texture type (eg. road)
 function getTextureName(no,type) {
   //Get the type of texture

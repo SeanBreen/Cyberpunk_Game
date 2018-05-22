@@ -24,8 +24,9 @@ function checkClickButtons() {
       player.image.src = "assets/"+getTextureName(player.holding[1],player.holding[2])+".png";
 
     } else {
-      //If within grid and tile isn't locked
-      if (withinGrid() && getCurrentTile()[0] != 0) {
+      //If within grid, tile isn't locked and no building on it
+      if (withinGrid() && getCurrentTile()[0] != 0 && getCurrentTile()[1] == 0) {
+        changeArrayValue(getArrayPosFromMouse(),player.holding[1],player.holding[2]);
         player.money -= player.holding[0];
         player.holding = [0,0,0];
         player.image.src = "";
