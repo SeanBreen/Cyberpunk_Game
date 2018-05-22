@@ -19,3 +19,11 @@ var player = new Player();
 function drawPlayer() {
   player.draw();
 }
+
+function canBuy(price) {
+  if (player.money - price >= 0) {
+    return true
+  } else {
+    return false;
+  }
+}
