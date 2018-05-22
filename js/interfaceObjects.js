@@ -6,11 +6,11 @@ menuButtons[2] = new Button([210,130],"Power",80,30,0);
 
 //Sub menu items
 var subMenuItems = [];
-subMenuItems[0] = new subMenuItem("House","+100/Mo",700,0,[1,"b"],getTextureName(1,"b"));
-subMenuItems[1] = new subMenuItem("Name2","item2",100,0,[1,"l"]);
-subMenuItems[2] = new subMenuItem("Road Horiz","item3",100,1,[1,"r"],getTextureName(1,"r"));
-subMenuItems[3] = new subMenuItem("Road Vert","item3",100,1,[2,"r"],getTextureName(2,"r"));
-subMenuItems[4] = new subMenuItem("Road Inter","item3",100,1,[3,"r"],getTextureName(3,"r"));
+subMenuItems[0] = new subMenuItem("Name1","item1",0,0,[1,"l"],100);
+subMenuItems[1] = new subMenuItem("Name2","item2",0,0,[2,"l"],100);
+subMenuItems[2] = new subMenuItem("Road Horiz","item3",100,1,[1,"r"],100,getTextureName(1,"r"));
+subMenuItems[3] = new subMenuItem("Road Vert","item3",100,1,[2,"r"],100,getTextureName(2,"r"));
+subMenuItems[4] = new subMenuItem("Road Inter","item3",100,1,[3,"r"],100,getTextureName(3,"r"));
 
 //Buttons for sub menu items
 var subMenuButtons = [];
