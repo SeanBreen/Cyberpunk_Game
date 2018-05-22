@@ -17,6 +17,7 @@ function drawMenu() {
   }
   drawHighlights();
   drawActiveSubMenu(activeSubMenu);
+  drawBalanceBox();
 }
 
 
@@ -45,12 +46,13 @@ var Button = function(pos,text,width,height,type) {
   }
 }
 //SubMenu button creator
-var SubMenuButton = function(pos,text,width,height,type,subMenu) {
+var SubMenuButton = function(pos,text,width,height,type,menu,subMenu) {
   this.pos = pos;
   this.text = text;
   this.style = [15,"Orbitron","#3fbfe2","#fff"];
   this.width = width;
   this.height = height;
+  this.menu = menu;
   this.subMenu = subMenu;
 
   this.draw = function() {
@@ -96,7 +98,7 @@ function drawHighlights() {
 }
 
 //Sub menu item constructor
-var subMenuItem = function(name,text,price,menu,imageSrc) {
+var subMenuItem = function(name,text,price,menu,objName,cost,imageSrc) {
   this.pos = [0,0];
   this.name = name;
   this.text = text;
@@ -105,6 +107,9 @@ var subMenuItem = function(name,text,price,menu,imageSrc) {
   this.width = 250;
   this.height = 100;
   this.menu = menu;
+  this.objName = objName;
+  this.cost = cost;
+  
   this.image = new Image();
   this.subMenuButton;
   if (imageSrc == "" || imageSrc == null) {
@@ -147,4 +152,13 @@ function drawActiveSubMenu(menu) {
       startY+=120;
     }
   }
+}
+
+//Draw balance box
+function drawBalanceBox() {
+  ctx.fillStyle = "rgba(0,0,0,0.6)";
+  ctx.fillRect((window.innerWidth/2)-200,window.innerHeight-50,400,100);
+  ctx.fillStyle = "#fff";
+  ctx.font = "30px Orbitron";
+  ctx.fillText("Balance: "+player.money,(window.innerWidth/2)-190,window.innerHeight-25);
 }
