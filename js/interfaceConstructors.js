@@ -19,6 +19,7 @@ function drawMenu() {
   drawActiveSubMenu(activeSubMenu);
   drawBalanceBox();
   drawWorldtime();
+  drawSpeedControl();
 }
 
 
@@ -29,15 +30,20 @@ var Button = function(pos,text,width,height,type) {
   this.style = [17,"Orbitron","rgba(0,0,0,1)","#fff"];
   this.width = width;
   this.height = height;
+  this.active = false;
 
   this.draw = function() {
     ctx.font = this.style[0]+"px "+this.style[1];
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     if (type == 0) {
+      ctx.textAlign = "left";
+      ctx.textBaseline = "top";
       ctx.fillStyle = this.style[3];
       ctx.fillText(this.text,this.pos[0],this.pos[1]);
     } else {
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
       ctx.fillStyle = this.style[2]
       ctx.fillRect(this.pos[0],this.pos[1],this.width,this.height);
       ctx.fillStyle = this.style[3];
@@ -94,6 +100,16 @@ function drawHighlights() {
     }
     else {
       subMenuButtons[i].style[2] = "#3fbfe2";
+    }
+  }
+  for (i=0;i<speedControlButtons.length;i++) {
+    //Check bounding box for the buttons and all active speed control buttons
+    if (mouse[0] >= speedControlButtons[i].pos[0] && mouse[0] <= (speedControlButtons[i].pos[0]+speedControlButtons[i].width) && mouse[1] >= speedControlButtons[i].pos[1] && mouse[1] <= (speedControlButtons[i].pos[1]+speedControlButtons[i].height) || speedControlButtons[i].active) {
+      //Change colour of the button
+      speedControlButtons[i].style[2] = "#f442e8";
+    }
+    else {
+      speedControlButtons[i].style[2] = "#3fbfe2";
     }
   }
 }
@@ -171,4 +187,15 @@ function drawWorldtime() {
   ctx.textAlign="left";
   ctx.font = "30px Orbitron";
   ctx.fillText(displayHours+":"+displayMinutes,(window.innerWidth/2)-53,25);
+}
+
+//Draw speed up time interface
+var timeSpeedModifier = 1;
+function drawSpeedControl() {
+  var x = window.innerWidth/2+100;
+  for (i=0;i<speedControlButtons.length;i++) {
+    speedControlButtons[i].pos = [x,0];
+    speedControlButtons[i].draw();
+    x+=speedControlButtons[i].width+5;
+  }
 }

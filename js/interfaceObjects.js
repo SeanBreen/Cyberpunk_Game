@@ -24,3 +24,15 @@ subMenuButtons[2] = new SubMenuButton([0,0],"",130,35,1,1,2);
 subMenuItems[2].subMenuButton = 2;
 subMenuButtons[3] = new SubMenuButton([0,0],"",130,35,1,1,3);
 subMenuItems[3].subMenuButton = 3;
+
+//Buttons for controlling time
+var speedControlButtons = [];
+speedControlButtons[0] = new Button([0,0],"1x",70,50,1);
+speedControlButtons[0].style = [17,"Orbitron","#3fbfe2","#fff"];
+speedControlButtons[0].active = true;
+
+speedControlButtons[1] = new Button([0,0],"10x",70,50,1);
+speedControlButtons[1].style = [17,"Orbitron","#3fbfe2","#fff"];
+
+speedControlButtons[2] = new Button([0,0],"100x",70,50,1);
+speedControlButtons[2].style = [17,"Orbitron","#3fbfe2","#fff"];
