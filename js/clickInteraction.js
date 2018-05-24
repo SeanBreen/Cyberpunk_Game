@@ -26,10 +26,12 @@ function checkClickButtons() {
       //If within grid, tile isn't locked and no building on it
       if (withinGrid() && getCurrentTile()[0] != 0 && getCurrentTile()[1] == 0) {
         changeArrayValue(getArrayPosFromMouse(),player.holding[1],player.holding[2]);
+        if (player.holding[2] == "r") {
+          mergeRoad();
+        }
         player.money -= player.holding[0];
         player.holding = [0,0,0];
         player.image.src = "";
-      } else {
       }
     }
   }
