@@ -1,6 +1,8 @@
 //Button Array
 var menuButtons = [];
 menuButtons[0] = new Button([10,130],"Houses",80,30,0);
+menuButtons[0].active = true;
+
 menuButtons[1] = new Button([110,130],"Roads",80,30,0);
 menuButtons[2] = new Button([210,130],"Power",80,30,0);
 
@@ -16,8 +18,6 @@ subMenuItems[3] = new subMenuItem("Road Inter","item3",100,1,[3,"r"],getTextureN
 var subMenuButtons = [];
 subMenuButtons[0] = new SubMenuButton([0,0],"",130,35,1,0,0);
 subMenuItems[0].subMenuButton = 0;
-//subMenuButtons[1] = new SubMenuButton([0,0],"",130,35,1,0,1);
-//subMenuItems[1].subMenuButton = 1;
 subMenuButtons[1] = new SubMenuButton([0,0],"",130,35,1,1,1);
 subMenuItems[1].subMenuButton = 1;
 subMenuButtons[2] = new SubMenuButton([0,0],"",130,35,1,1,2);
