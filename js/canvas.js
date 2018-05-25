@@ -10,6 +10,7 @@ canvas.addEventListener("mousemove", function(ev) {
 });
 //Tile size and position of the game grid on screen
 var tileSize = 80;
+var stretchRatio = tileSize/64;
 var initialStartX = (window.innerWidth/2) - ((tileSize*10)/2);
 var initialStartY = (window.innerHeight/2) - ((tileSize*10)/2);
 
@@ -67,7 +68,7 @@ function drawBuildings(buildings) {
     if (buildings[i] !=0){
       var textureName = getTextureName(buildings[i],"b");
       var s = new Sprite(textureName);
-      s.draw(startX,startY,tileSize,tileSize);
+      s.draw(startX,startY-((s.image.height*stretchRatio)-tileSize),tileSize,s.image.height*stretchRatio);
       s.pos=[startX,startY];
     }
     startX+=tileSize;
@@ -117,6 +118,9 @@ function getTextureName(no,type) {
       switch(no) {
         case 1:
           return "sprites/buildings/houses/low";
+          break;
+        case 2:
+          return "sprites/buildings/houses/medium";
           break;
       }
       break;

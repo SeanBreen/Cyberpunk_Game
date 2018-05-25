@@ -1,5 +1,6 @@
 var worldYears = 0;
 var worldMonths = 0;
+var worldWeeks = 0;
 var worldDays = 0;
 var worldHours = 0;
 var worldMinutes = 0;
@@ -16,9 +17,17 @@ function checkIncrementTime() {
     worldDays++;
     worldHours = 0;
   }
-  if (worldDays >= 31) {
-    worldMonths++;
+  if (worldDays >= 7) {
+    worldWeeks++;
     worldDays = 0;
+    //Collect income for this week
+    collectWeeklyIncome();
+  }
+  if (worldWeeks >= 4) {
+    worldMonths++;
+    worldWeeks = 0;
+    //Collect income for this month
+    collectMonthlyIncome();
   }
   if (worldMonths >=12) {
     worldYears++;
