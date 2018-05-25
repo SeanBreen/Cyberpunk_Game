@@ -34,11 +34,11 @@ subMenuItems[4].subMenuButton = 4;
 //Buttons for controlling time
 var speedControlButtons = [];
 speedControlButtons[0] = new Button([0,0],"1x",70,50,1);
-speedControlButtons[0].style = [17,"Orbitron","#3fbfe2","#fff"];
+speedControlButtons[0].style = [20,"PT Mono","#3fbfe2","#fff"];
 speedControlButtons[0].active = true;
 
 speedControlButtons[1] = new Button([0,0],"10x",70,50,1);
-speedControlButtons[1].style = [17,"Orbitron","#3fbfe2","#fff"];
+speedControlButtons[1].style = [20,"PT Mono","#3fbfe2","#fff"];
 
 speedControlButtons[2] = new Button([0,0],"100x",70,50,1);
-speedControlButtons[2].style = [17,"Orbitron","#3fbfe2","#fff"];
+speedControlButtons[2].style = [20,"PT Mono","#3fbfe2","#fff"];

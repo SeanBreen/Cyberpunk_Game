@@ -18,6 +18,7 @@ function drawMenu() {
   drawHighlights();
   drawActiveSubMenu(activeSubMenu);
   drawBalanceBox();
+  drawDate();
   drawWorldtime();
   drawSpeedControl();
 }
@@ -183,14 +184,24 @@ function drawBalanceBox() {
   ctx.fillText("Balance: "+player.money+" credits",(window.innerWidth/2)-190,window.innerHeight-25);
 }
 
+//Draw date box
+function drawDate() {
+  ctx.fillStyle = "#f442e8";
+  ctx.fillRect((window.innerWidth/2)-320,0,220,50);
+  ctx.fillStyle = "#fff";
+  ctx.textAlign="center";
+  ctx.font = "30px PT Mono";
+  ctx.fillText(displayDays+"/"+displayMonths+"/"+displayYears,(window.innerWidth/2)-210,25);
+}
+
 //Draw world time
 function drawWorldtime() {
   ctx.fillStyle = "#f442e8";
   ctx.fillRect((window.innerWidth/2)-60,0,120,50);
   ctx.fillStyle = "#fff";
-  ctx.textAlign="left";
-  ctx.font = "30px Orbitron";
-  ctx.fillText(displayHours+":"+displayMinutes,(window.innerWidth/2)-53,25);
+  ctx.textAlign="center";
+  ctx.font = "30px PT Mono";
+  ctx.fillText(displayHours+":"+displayMinutes,(window.innerWidth/2),25);
 }
 
 //Draw speed up time interface
