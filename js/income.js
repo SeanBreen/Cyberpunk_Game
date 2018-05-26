@@ -1,7 +1,7 @@
 //Collect income for buildings that give income every week
 function collectWeeklyIncome() {
   for (i=0;i<buildings.length;i++) {
-    if (buildings[i] != 0) {
+    if (buildings[i] == 1) {
       player.money+=getIncomeValue(buildings[i],"b","w");
     }
   }
@@ -10,7 +10,7 @@ function collectWeeklyIncome() {
 //Collect income for buildings that give income every month
 function collectMonthlyIncome() {
   for (i=0;i<buildings.length;i++) {
-    if (buildings[i] != 0) {
+    if (buildings[i] == 2) {
       player.money+=getIncomeValue(buildings[i],"b","m");
     }
   }

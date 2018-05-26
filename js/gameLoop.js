@@ -12,6 +12,7 @@ function draw() {
   drawLevel(level);
   drawRoads(roads);
   drawBuildings(buildings);
+  drawPower(power);
   drawNightBox();
   drawMenu();
   drawPlayer();
