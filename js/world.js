@@ -50,6 +50,19 @@ var power = [
   0,0,0,0,0,0,0,0,0,0
 ];
 
+var population = [
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0
+];
+
 //Get the position in the level array given BLOCK co-ords eg x = 3, y = 2 would return 12
 function getArrayPos(x,y) {
   var arrayPos = (y*Math.sqrt(level.length))-(Math.sqrt(level.length)-x)-1;
