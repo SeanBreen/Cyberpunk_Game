@@ -75,6 +75,25 @@ function drawBuildings(buildings) {
   }
 }
 
+//Draw the power buildings for the game
+function drawPower(power) {
+  var startX = initialStartX;
+  var startY = initialStartY;
+  for (i=0;i<power.length;i++) {
+    if (i%10 === 0 && i!=0) {
+      startY+=tileSize;
+      startX = initialStartX;
+    }
+    if (power[i] !=0){
+      var textureName = getTextureName(power[i],"p");
+      var s = new Sprite(textureName);
+      s.draw(startX,startY-((s.image.height*stretchRatio)-tileSize),tileSize,s.image.height*stretchRatio);
+      s.pos=[startX,startY];
+    }
+    startX+=tileSize;
+  }
+}
+
 //Returns the texture name from a given integer and texture type (eg. road)
 function getTextureName(no,type) {
   //Get the type of texture
@@ -95,13 +114,19 @@ function getTextureName(no,type) {
     case 1:
       switch(no) {
         case 1:
-          return "roads/roadX";
+          return "sprites/roads/roadX";
           break;
         case 2:
-          return "roads/roadY";
+          return "sprites/roads/roadY";
           break;
         case 3:
-          return "roads/road4Way";
+          return "sprites/roads/road4Way";
+          break;
+        case 4:
+          return "sprites/roads/road3Way";
+          break;
+        case 5:
+          return "sprites/roads/roadCorner";
           break;
       }
       break;
@@ -121,6 +146,14 @@ function getTextureName(no,type) {
           break;
         case 2:
           return "sprites/buildings/houses/medium";
+          break;
+      }
+      break;
+    case "p":
+    case 4:
+      switch(no) {
+        case 1:
+          return "sprites/buildings/power/generator";
           break;
       }
       break;
