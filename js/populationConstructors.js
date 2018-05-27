@@ -1,10 +1,11 @@
 var families = [];
 
 //Constructor to build a person
-var Person = function(forename,age) {
+var Person = function(forename,age,gender) {
   this.forename = forename;
   this.happiness = 1;
   this.age = age;
+  this.gender = gender;
 }
 
 //Constructor to build a family from people
@@ -31,7 +32,7 @@ function generateFamily(tilePos) {
     }
     var forename = getForename(gender);
     var age = Math.floor(Math.random()*30)+20;
-    adults[i] = new Person(forename,age);
+    adults[i] = new Person(forename,age,gender);
   }
 
   //Pick number of children for the family 0-3
@@ -45,7 +46,7 @@ function generateFamily(tilePos) {
     }
     var forename = getForename(gender);
     var age = Math.floor(Math.random()*17)+1;
-    children[i] = new Person(forename,age);
+    children[i] = new Person(forename,age,gender);
   }
 
   var surname = getSurname();
@@ -62,7 +63,7 @@ function generateFamily(tilePos) {
     tier = 3;
   }
 
-  families[families.length] = new Family(adults,children,home,surname,tier);
+  families[families.length] = new Family(adults,children,tilePos,surname,tier);
 }
 //Return a random forename given a gender
 function getForename(gender) {

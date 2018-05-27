@@ -21,6 +21,8 @@ function drawMenu() {
   drawDate();
   drawWorldtime();
   drawSpeedControl();
+  drawPopulationMenu();
+  drawHouseHover();
 }
 
 
@@ -177,7 +179,7 @@ function drawActiveSubMenu(menu) {
 
 //Draw balance box
 function drawBalanceBox() {
-  ctx.fillStyle = "rgba(0,0,0,0.6)";
+  ctx.fillStyle="rgba(23,23,23,0.8)";
   ctx.fillRect((window.innerWidth/2)-200,window.innerHeight-50,400,100);
   ctx.fillStyle = "#fff";
   ctx.font = "30px Orbitron";
@@ -213,4 +215,86 @@ function drawSpeedControl() {
     speedControlButtons[i].draw();
     x+=speedControlButtons[i].width+5;
   }
+}
+
+//Hover box for houses
+function drawHouseHover() {
+    if (withinGrid() && getCurrentTile()[2] != 0 && player.holding[0] == [0]) {
+      var startX = (window.innerWidth/2)+100;
+      var startY = window.innerHeight/2;
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.moveTo(mouse[0],mouse[1]);
+      ctx.lineTo(startX,startY);
+      ctx.stroke();
+      ctx.fillStyle = "#f442e8";
+      ctx.fillRect(startX,startY,250,180);
+      ctx.fillStyle = "#fff";
+      var family = 0;
+
+      //Search through family array for the family living in this tile
+      for (i=0;i<families.length;i++) {
+        if (families[i]["home"] == getArrayPosFromMouse()) {
+          family = families[i];
+          break;
+        }
+      }
+      //Draw the name at the top of the box
+      ctx.textAlign = "right";
+      ctx.font = "30px Orbitron";
+      startY+=25;
+      ctx.fillText(family["surname"],startX+240,startY);
+      //Draw the white underline
+      startX+=20;
+      startY+=15;
+      ctx.fillRect(startX,startY,220,5);
+      //Draw the number of adults and children
+      startX = (window.innerWidth/2)+340;
+      ctx.font = "20px Orbitron";
+      startY+=30;
+      ctx.fillText("Adults: "+family["adults"].length+" Kids: "+family["children"].length,startX,startY);
+
+      startY+=30;
+      //Combine the happiness level of every family member
+      var familyHappiness = 0;
+      var noFamilyMembers = 0;
+      for (i=0;i<family["adults"].length;i++) {
+        familyHappiness+=family["adults"][i].happiness;
+        noFamilyMembers++;
+      }
+      for (i=0;i<family["children"].length;i++) {
+        familyHappiness+=family["children"][i].happiness;
+        noFamilyMembers++;
+      }
+      //Draw the happiness bar for the family
+      ctx.fillText("Happiness",startX,startY);
+      startY+=20;
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(startX-220,startY,220,30);
+      ctx.fillStyle = "#3fbfe2";
+      var happinessLength = (familyHappiness/noFamilyMembers)*210;
+      ctx.fillRect(startX-215,startY+5,happinessLength,20);
+    }
+}
+
+//Menu for population info
+function drawPopulationMenu() {
+  var startX = window.innerWidth-280;
+  var startY = 90;
+  ctx.fillStyle="rgba(23,23,23,0.8)";
+  ctx.fillRect(window.innerWidth-300,50,300,800);
+  ctx.fillStyle="#fff";
+  ctx.textAlign = "center";
+  ctx.font = "30px Orbitron";
+  ctx.fillText("Families",window.innerWidth-150,startY);
+
+  startY+=40;
+  ctx.textAlign="left";
+  ctx.font = "20px Orbitron";
+
+    for (i=0;i<families.length;i++) {
+        ctx.fillText(families[i]["surname"],startX,startY);
+        startY+=30;
+    }
 }

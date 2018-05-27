@@ -1,5 +1,5 @@
 var Player = function() {
-  this.money = 1000;
+  this.money = 100000;
   this.holding = 0;
   this.score = 0;
   this.image = new Image();

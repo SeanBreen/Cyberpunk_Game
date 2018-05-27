@@ -29,6 +29,10 @@ function checkClickButtons() {
         if (player.holding[2] == "r") {
           mergeRoad();
         }
+        if (player.holding[2] == "b") {
+          generateFamily(getArrayPosFromMouse());
+          updatePopulation();
+        }
         player.money -= player.holding[0];
         player.holding = [0,0,0];
         player.image.src = "";
