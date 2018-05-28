@@ -16,12 +16,14 @@ function draw() {
   drawNightBox();
   drawMenu();
   drawPlayer();
+  drawVehicles();
 }
 
 function loop(timestamp) {
   var progress = timestamp - lastRender;
 
   update(progress);
+  checkHousesForPower();
   draw();
 
   lastRender = timestamp;

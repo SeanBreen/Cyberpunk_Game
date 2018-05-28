@@ -1,7 +1,6 @@
 var Sprite = function(filename) {
   this.image = null;
   this.pos=[0,0];
-  this.speed=0;
   if (filename != "" && filename != undefined && filename != null){
     filename = "assets/"+filename;
     this.image = new Image();
