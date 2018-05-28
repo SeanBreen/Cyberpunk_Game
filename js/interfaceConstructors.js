@@ -222,15 +222,44 @@ function drawHouseHover() {
     if (withinGrid() && getCurrentTile()[2] != 0 && player.holding[0] == [0]) {
       var startX = (window.innerWidth/2)+100;
       var startY = window.innerHeight/2;
+      // ctx.strokeStyle = "#fff";
+      // ctx.lineWidth = 4;
+      // ctx.fillStyle = "rgba(244,66,232,0.8)";
+      //
+      // ctx.beginPath();
+      // ctx.moveTo(mouse[0],mouse[1]);
+      // ctx.lineTo(startX,startY);
+      // ctx.lineTo(startX,startY+30);
+      // ctx.lineTo(mouse[0],mouse[1]);
+      // ctx.fill();
+      //
+      // ctx.beginPath();
+      // ctx.moveTo(startX,startY);
+      // ctx.lineTo(mouse[0],mouse[1]);
+      // ctx.lineTo(startX,startY+30);
+      // ctx.stroke();
+      //
+      // ctx.fillRect(startX,startY,250,180);
+      //
+      //
+      // ctx.beginPath();
+      // ctx.moveTo(startX,startY);
+      // ctx.lineTo(startX+250,startY);
+      // ctx.lineTo(startX+250,startY+180);
+      // ctx.lineTo(startX,startY+180);
+      // ctx.lineTo(startX,startY+30);
+      // ctx.stroke();
       ctx.strokeStyle = "#fff";
       ctx.lineWidth = 5;
       ctx.beginPath();
       ctx.moveTo(mouse[0],mouse[1]);
       ctx.lineTo(startX,startY);
       ctx.stroke();
-      ctx.fillStyle = "#f442e8";
+      ctx.fillStyle = "rgba(244,66,232,0.8)";
       ctx.fillRect(startX,startY,250,180);
+      ctx.strokeRect(startX,startY,250,180);
       ctx.fillStyle = "#fff";
+
       var family = 0;
 
       //Search through family array for the family living in this tile
@@ -270,11 +299,11 @@ function drawHouseHover() {
       //Draw the happiness bar for the family
       ctx.fillText("Happiness",startX,startY);
       startY+=20;
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = "#c132b8";
       ctx.fillRect(startX-220,startY,220,30);
       ctx.fillStyle = "#3fbfe2";
-      var happinessLength = (familyHappiness/noFamilyMembers)*210;
-      ctx.fillRect(startX-215,startY+5,happinessLength,20);
+      var happinessLength = (familyHappiness/noFamilyMembers)*220;
+      ctx.fillRect(startX-220,startY,happinessLength,30);
     }
 }
 
@@ -297,4 +326,11 @@ function drawPopulationMenu() {
         ctx.fillText(families[i]["surname"],startX,startY);
         startY+=30;
     }
+}
+
+//To indicate a house needs power, this draws a symbol above it
+function drawPowerSymbol(pos) {
+  //((positioninarray-1)/tilesize)+initialStart = mouse0
+  console.log(((pos-1)/tileSize)+initialStartX);
+
 }
