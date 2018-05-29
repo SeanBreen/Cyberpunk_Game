@@ -46,10 +46,10 @@ function drawRoads(roads) {
       startY+=tileSize;
       startX = initialStartX;
     }
-    if (roads[i] !=0){
-      var textureName = getTextureName(roads[i],"r");
+    if (roads[i][0] !=0){
+      var textureName = getTextureName(roads[i][0],"r");
       var s = new Sprite(textureName);
-      s.draw(startX,startY,tileSize,tileSize);
+      s.draw(startX,startY,tileSize,tileSize,roads[i][1]);
       s.pos=[startX,startY];
     }
     startX+=tileSize;
@@ -114,16 +114,16 @@ function getTextureName(no,type) {
     case 1:
       switch(no) {
         case 1:
-          return "sprites/roads/roadX";
+          return "sprites/roads/roadEnd";
           break;
         case 2:
-          return "sprites/roads/roadY";
+          return "sprites/roads/roadStraight";
           break;
         case 3:
-          return "sprites/roads/road4Way";
+          return "sprites/roads/road3Way";
           break;
         case 4:
-          return "sprites/roads/road3Way";
+          return "sprites/roads/road4Way";
           break;
         case 5:
           return "sprites/roads/roadCorner";

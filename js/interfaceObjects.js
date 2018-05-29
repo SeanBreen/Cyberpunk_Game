@@ -12,9 +12,9 @@ var subMenuItems = [];
 subMenuItems[0] = new subMenuItem("House","+100/Wk",700,0,[1,"b"],getTextureName(1,"b"));
 subMenuItems[1] = new subMenuItem("Apartments","+2000/Mo",3000,0,[2,"b"],getTextureName(2,"b"));
 //Roads
-subMenuItems[2] = new subMenuItem("Road Horiz","item3",100,1,[1,"r"],getTextureName(1,"r"));
-subMenuItems[3] = new subMenuItem("Road Vert","item3",100,1,[2,"r"],getTextureName(2,"r"));
-subMenuItems[4] = new subMenuItem("Road Inter","item3",100,1,[3,"r"],getTextureName(3,"r"));
+subMenuItems[2] = new subMenuItem("Road End","item3",100,1,[1,"r"],getTextureName(1,"r"));
+subMenuItems[3] = new subMenuItem("Road","item3",100,1,[2,"r"],getTextureName(2,"r"));
+subMenuItems[4] = new subMenuItem("Road T-Int","item3",100,1,[3,"r"],getTextureName(3,"r"));
 //Power
 subMenuItems[5] = new subMenuItem("Generator","-200/Mo",100,2,[1,"p"],getTextureName(1,"p"));
 //Buttons for sub menu items
