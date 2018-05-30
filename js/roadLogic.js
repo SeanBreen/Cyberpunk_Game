@@ -43,10 +43,10 @@ function mergeRoad(pos) {
             rotation = 0;
             roads[i][0] = 5;
           } else if (up && down) {
-            rotation = 0;
+            rotation = 90;
             roads[i][0] = 2;
           } else if (left && right) {
-            rotation = 90;
+            rotation = 0;
             roads[i][0] = 2;
           }
           roads[i][1] = rotation;

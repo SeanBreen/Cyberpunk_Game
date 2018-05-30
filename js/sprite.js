@@ -9,11 +9,24 @@ var Sprite = function(filename) {
     console.log("Could not create Sprite, filename invalid. Name:"+filename);
   }
 
-  this.draw = function(x,y,w,h){
+  this.draw = function(x,y,w,h,r){
     if (w === undefined || h === undefined){
       ctx.drawImage(this.image,x,y,this.image.width,this.image.height);
-    } else {
+    } else if (r == 0 || r === undefined) {
       ctx.drawImage(this.image,x,y,w,h);
+    } else {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.translate(tileSize/2,tileSize/2);
+      ctx.rotate(r*(Math.PI/180));
+      if (r == 90 || r == 180) {
+        x=x*Math.cos(r*(Math.PI/180)) - y*Math.sin(r*(Math.PI/180));
+      }
+      if (r == 180 || r == 270) {
+        y=y*Math.cos(r*(Math.PI/180)) - x*Math.sin(r*(Math.PI/180));
+      }
+      ctx.drawImage(this.image,-tileSize/2,-tileSize/2,w,h);
+      ctx.restore();
     }
   }
 };
