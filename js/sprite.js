@@ -16,8 +16,7 @@ var Sprite = function(filename) {
       ctx.drawImage(this.image,x,y,w,h);
     } else {
       ctx.save();
-      ctx.translate(x, y);
-      ctx.translate(tileSize/2,tileSize/2);
+      ctx.translate(x+tileSize/2, y+tileSize/2);
       ctx.rotate(r*(Math.PI/180));
       if (r == 90 || r == 180) {
         x=x*Math.cos(r*(Math.PI/180)) - y*Math.sin(r*(Math.PI/180));

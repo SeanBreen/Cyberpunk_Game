@@ -62,4 +62,17 @@ function changeVehicleDirection() {
   // if (getRoad("left",i) > 0 && (Math.floor(Math.random()*2)) == 1) {
   //   direction = "left";
   // }
+  var directions = [];
+  if (getRoad("up") != 0) {
+    directions.push("up");
+  }
+  if (getRoad("right") != 0) {
+    directions.push("right");
+  }
+  if (getRoad("down") != 0) {
+    directions.push("down");
+  }
+  if (getRoad("left") != 0 ) {
+    directions.push("left");
+  }
 }
