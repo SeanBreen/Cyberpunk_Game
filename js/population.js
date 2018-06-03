@@ -21,6 +21,7 @@ function checkHousesForPower() {
       }
     }
     if (noPowerPlants == 0) {
+      
       drawPowerSymbol(families[i].home);
       for (j=0;j<families[i]["adults"].length;j++) {
         families[i]["adults"][j].happiness-=0.0001;
@@ -28,6 +29,8 @@ function checkHousesForPower() {
       for (j=0;j<families[i]["children"].length;j++) {
         families[i]["children"][j].happiness-=0.0001;
       }
+    } else {
+      buildings[families[i].home].turnOn();
     }
     noPowerPlants = 0;
   }
