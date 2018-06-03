@@ -1,15 +1,17 @@
-var Sprite = function(filename) {
-  this.image = null;
-  this.pos=[0,0];
-  if (filename != "" && filename != undefined && filename != null){
-    filename = "assets/"+filename;
-    this.image = new Image();
-    this.image.src = filename+".PNG";
-  } else {
-    console.log("Could not create Sprite, filename invalid. Name:"+filename);
+class Sprite {
+  constructor(filename) {
+    this.image = null;
+    this.pos=[0,0];
+    this.filename = filename;
+    if (this.filename != "" && this.filename != undefined && this.filename != null){
+      this.image = new Image();
+      this.image.src = "assets/"+this.filename+".PNG";
+    } else {
+      console.log("Could not create Sprite, filename invalid. Name:"+filename);
+    }
   }
 
-  this.draw = function(x,y,w,h,r){
+  draw(x,y,w,h,r){
     if (w === undefined || h === undefined){
       ctx.drawImage(this.image,x,y,this.image.width,this.image.height);
     } else if (r == 0 || r === undefined) {
@@ -28,4 +30,48 @@ var Sprite = function(filename) {
       ctx.restore();
     }
   }
-};
+}
+
+class Building extends Sprite {
+  constructor(filename) {
+    super(filename);
+    this.powered = false;
+    this.image.src = "assets/"+this.filename+"NoPower.PNG";
+  }
+
+  turnOn() {
+    this.powered = true;
+    this.image.src = "assets/"+this.filename+".PNG";
+  }
+
+  turnOff() {
+    this.powered = false;
+    this.image.src = "assets/"+this.filename+"NoPower.PNG";
+  }
+}
+
+class Tile extends Sprite {
+  constructor(filename) {
+    super(filename);
+    this.type = 0;
+  }
+}
+
+class Road extends Sprite {
+  constructor(filename) {
+    super(filename);
+    this.type = 0;
+    this.rotation = 0;
+  }
+
+  changeImgSrc(no) {
+    var file = getTextureName(no,"r");
+    this.image.src = "assets/"+file+".PNG";
+  }
+}
+
+class Power extends Sprite {
+  constructor(filename) {
+    super(filename);
+  }
+}

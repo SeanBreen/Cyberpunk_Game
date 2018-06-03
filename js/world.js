@@ -12,16 +12,16 @@ var level = [
 ];
 
 var roads = [
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [1,180],[2,0],[2,0],[2,0],[2,0],[2,0],[2,0],[2,0],[2,0],[1,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],
-  [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0
 ];
 
 var buildings = [
@@ -83,7 +83,7 @@ function getCurrentTile() {
     var x = Math.floor((mouse[0]-initialStartX)/tileSize)+1;
     var y = Math.floor((mouse[1]-initialStartY)/tileSize)+1;
     var arrayPos = getArrayPos(x,y);
-    return [level[arrayPos],roads[arrayPos],buildings[arrayPos]];
+    return [level[arrayPos].type,roads[arrayPos].type,buildings[arrayPos]];
   }
 }
 
@@ -104,9 +104,11 @@ function getRoad(direction,currentPos) {
       break;
   }
   if (currentPos < 0 || currentPos > 99) {
-    return 0;
+    return false;
   } else {
-    return roads[currentPos][0];
+    if (roads[currentPos] != 0) {
+      return true;
+    }
   }
 
 }
@@ -114,7 +116,7 @@ function getRoad(direction,currentPos) {
 //Changes value in given array at a given pos
 function changeArrayValue(pos,value,type) {
   if (type == "r") {
-    roads[pos][0] = value;
+    roads[pos] = value;
   } else if (type == "l") {
     level[pos] = value;
   } else if (type == "b") {
@@ -131,4 +133,20 @@ function withinGrid() {
   } else {
     return false;
   }
+}
+
+function createInitialWorldObjects() {
+  for (i=0;i<level.length;i++) {
+    var tile = new Sprite(getTextureName(level[i],"l"));
+    tile.type = [level[i]];
+    level[i] = tile;
+  }
+}
+
+function createInitialRoadObjects() {
+  for (i=60;i<70;i++) {
+    var road = new Road(getTextureName(1,"r"));
+    roads[i] = road;
+  }
+  mergeRoad();
 }

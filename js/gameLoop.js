@@ -31,3 +31,6 @@ function loop(timestamp) {
 }
 var lastRender = 0;
 window.requestAnimationFrame(loop);
+//Create the tile and road objects for the level on load
+createInitialWorldObjects();
+createInitialRoadObjects();

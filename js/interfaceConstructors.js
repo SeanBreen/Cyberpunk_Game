@@ -222,33 +222,7 @@ function drawHouseHover() {
     if (withinGrid() && getCurrentTile()[2] != 0 && player.holding[0] == [0]) {
       var startX = (window.innerWidth/2)+100;
       var startY = window.innerHeight/2;
-      // ctx.strokeStyle = "#fff";
-      // ctx.lineWidth = 4;
-      // ctx.fillStyle = "rgba(244,66,232,0.8)";
-      //
-      // ctx.beginPath();
-      // ctx.moveTo(mouse[0],mouse[1]);
-      // ctx.lineTo(startX,startY);
-      // ctx.lineTo(startX,startY+30);
-      // ctx.lineTo(mouse[0],mouse[1]);
-      // ctx.fill();
-      //
-      // ctx.beginPath();
-      // ctx.moveTo(startX,startY);
-      // ctx.lineTo(mouse[0],mouse[1]);
-      // ctx.lineTo(startX,startY+30);
-      // ctx.stroke();
-      //
-      // ctx.fillRect(startX,startY,250,180);
-      //
-      //
-      // ctx.beginPath();
-      // ctx.moveTo(startX,startY);
-      // ctx.lineTo(startX+250,startY);
-      // ctx.lineTo(startX+250,startY+180);
-      // ctx.lineTo(startX,startY+180);
-      // ctx.lineTo(startX,startY+30);
-      // ctx.stroke();
+
       ctx.strokeStyle = "#fff";
       ctx.lineWidth = 5;
       ctx.beginPath();
@@ -331,6 +305,6 @@ function drawPopulationMenu() {
 //To indicate a house needs power, this draws a symbol above it
 function drawPowerSymbol(pos) {
   //((positioninarray-1)/tilesize)+initialStart = mouse0
-  console.log(((pos-1)/tileSize)+initialStartX);
+  //console.log(((pos-1)/tileSize)+initialStartX);
 
 }

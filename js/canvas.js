@@ -21,6 +21,10 @@ function clearScreen() {
   ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
 }
 
+// for (i=0;i<level.length;i++) {
+//   level[i] = new Sprite(getTextureName(level[i],"l"));
+// }
+
 //Draw all of the tiles for the level background
 function drawLevel(level) {
   var startX = initialStartX;
@@ -30,9 +34,7 @@ function drawLevel(level) {
       startY+=tileSize;
       startX = initialStartX;
     }
-    var textureName = getTextureName(level[i],"l");
-    var b = new Sprite(textureName);
-    b.draw(startX,startY,tileSize,tileSize);
+    level[i].draw(startX,startY,tileSize,tileSize);
     startX+=tileSize;
   }
 }
@@ -46,11 +48,9 @@ function drawRoads(roads) {
       startY+=tileSize;
       startX = initialStartX;
     }
-    if (roads[i][0] !=0){
-      var textureName = getTextureName(roads[i][0],"r");
-      var s = new Sprite(textureName);
-      s.draw(startX,startY,tileSize,tileSize,roads[i][1]);
-      s.pos=[startX,startY];
+    if (roads[i] !=0){
+      roads[i].draw(startX,startY,tileSize,tileSize,roads[i].rotation);
+      roads[i].pos=[startX,startY];
     }
     startX+=tileSize;
   }
@@ -66,10 +66,8 @@ function drawBuildings(buildings) {
       startX = initialStartX;
     }
     if (buildings[i] !=0){
-      var textureName = getTextureName(buildings[i],"b");
-      var s = new Sprite(textureName);
-      s.draw(startX,startY-((s.image.height*stretchRatio)-tileSize),tileSize,s.image.height*stretchRatio);
-      s.pos=[startX,startY];
+      buildings[i].draw(startX,startY-((buildings[i].image.height*stretchRatio)-tileSize),tileSize,buildings[i].image.height*stretchRatio);
+      buildings[i].pos=[startX,startY];
     }
     startX+=tileSize;
   }
@@ -85,10 +83,8 @@ function drawPower(power) {
       startX = initialStartX;
     }
     if (power[i] !=0){
-      var textureName = getTextureName(power[i],"p");
-      var s = new Sprite(textureName);
-      s.draw(startX,startY-((s.image.height*stretchRatio)-tileSize),tileSize,s.image.height*stretchRatio);
-      s.pos=[startX,startY];
+      power[i].draw(startX,startY-((power[i].image.height*stretchRatio)-tileSize),tileSize,power[i].image.height*stretchRatio);
+      power[i].pos=[startX,startY];
     }
     startX+=tileSize;
   }
