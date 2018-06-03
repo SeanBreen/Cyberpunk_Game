@@ -303,8 +303,8 @@ function drawPopulationMenu() {
 }
 
 //To indicate a house needs power, this draws a symbol above it
-function drawPowerSymbol(pos) {
+function drawBuildingPowerSymbol(pos) {
   //((positioninarray-1)/tilesize)+initialStart = mouse0
   //console.log(((pos-1)/tileSize)+initialStartX);
-
+  buildings[pos].drawPowerSymbol();
 }

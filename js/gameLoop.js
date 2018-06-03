@@ -17,13 +17,13 @@ function draw() {
   drawMenu();
   drawPlayer();
   drawVehicles();
+  checkHousesForPower();
 }
 
 function loop(timestamp) {
   var progress = timestamp - lastRender;
 
   update(progress);
-  checkHousesForPower();
   draw();
 
   lastRender = timestamp;

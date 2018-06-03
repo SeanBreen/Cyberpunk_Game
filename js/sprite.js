@@ -37,6 +37,8 @@ class Building extends Sprite {
     super(filename);
     this.powered = false;
     this.image.src = "assets/"+this.filename+"NoPower.PNG";
+    this.lightning = new Image();
+    this.lightning.src = "assets/sprites/icons/powerBolt.PNG";
   }
 
   turnOn() {
@@ -47,6 +49,12 @@ class Building extends Sprite {
   turnOff() {
     this.powered = false;
     this.image.src = "assets/"+this.filename+"NoPower.PNG";
+  }
+
+  drawPowerSymbol() {
+    if (!this.powered) {
+      ctx.drawImage(this.lightning,this.pos[0]+5,this.pos[1]-this.image.height+50,this.lightning.width,this.lightning.height/1.75);
+    }
   }
 }
 
