@@ -18,6 +18,7 @@ function draw() {
   drawPlayer();
   drawVehicles();
   checkHousesForPower();
+  drawPowerPlantRange();
 }
 
 function loop(timestamp) {

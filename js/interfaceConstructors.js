@@ -219,7 +219,7 @@ function drawSpeedControl() {
 
 //Hover box for houses
 function drawHouseHover() {
-    if (withinGrid() && getCurrentTile()[2] != 0 && player.holding[0] == [0]) {
+    if (withinGrid() && getCurrentTile()[2] != 0 && player.holding[0] == 0) {
       var startX = (window.innerWidth/2)+100;
       var startY = window.innerHeight/2;
 
@@ -304,7 +304,5 @@ function drawPopulationMenu() {
 
 //To indicate a house needs power, this draws a symbol above it
 function drawBuildingPowerSymbol(pos) {
-  //((positioninarray-1)/tilesize)+initialStart = mouse0
-  //console.log(((pos-1)/tileSize)+initialStartX);
   buildings[pos].drawPowerSymbol();
 }

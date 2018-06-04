@@ -19,7 +19,7 @@ function checkClickButtons() {
   }
 
   //If within grid, tile isn't locked and no building on it
-  if (withinGrid() && getCurrentTile()[0] != 0 && getCurrentTile()[1] == undefined) { //
+  if (withinGrid() && getCurrentTile()[0] != 0 && getCurrentTile()[1] == undefined) {
     var structure = 0;
     if (player.holding[2] == "r") {
       structure = new Road(getTextureName(player.holding[1],"r"));
@@ -32,6 +32,7 @@ function checkClickButtons() {
     }
     if (player.holding[2] == "p") {
       structure = new Power(getTextureName(player.holding[1],"p"));
+      structure.type = player.holding[1];
     }
     changeArrayValue(getArrayPosFromMouse(),structure,player.holding[2]);
 

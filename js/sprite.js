@@ -81,5 +81,6 @@ class Road extends Sprite {
 class Power extends Sprite {
   constructor(filename) {
     super(filename);
+    this.type = 0;
   }
 }

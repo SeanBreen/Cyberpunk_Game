@@ -83,7 +83,7 @@ function getCurrentTile() {
     var x = Math.floor((mouse[0]-initialStartX)/tileSize)+1;
     var y = Math.floor((mouse[1]-initialStartY)/tileSize)+1;
     var arrayPos = getArrayPos(x,y);
-    return [level[arrayPos].type,roads[arrayPos].type,buildings[arrayPos]];
+    return [level[arrayPos].type,roads[arrayPos].type,buildings[arrayPos],power[arrayPos]];
   }
 }
 
