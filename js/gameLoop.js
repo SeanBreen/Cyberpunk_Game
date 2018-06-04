@@ -11,12 +11,12 @@ function draw() {
   //Draw everything
   drawLevel(level);
   drawRoads(roads);
+  drawVehicles();
   drawBuildings(buildings);
   drawPower(power);
   drawNightBox();
   drawMenu();
   drawPlayer();
-  drawVehicles();
   checkHousesForPower();
   drawPowerPlantRange();
 }
