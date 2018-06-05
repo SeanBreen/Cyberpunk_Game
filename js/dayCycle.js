@@ -51,7 +51,6 @@ function checkIncrementTime() {
     collectWeeklyIncome();
   }
   if (worldWeeks >= 4) {
-    console.log("weeks");
     worldMonths++;
     worldWeeks = 0;
     worldDays = 1;

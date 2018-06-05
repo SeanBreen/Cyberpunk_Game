@@ -1,46 +1,59 @@
+//Storage for structures to add/remove their profit from player balance
+var weeklyProfits = [];
+var monthlyProfits = [];
+
 //Collect income for buildings that give income every week
 function collectWeeklyIncome() {
-  for (i=0;i<buildings.length;i++) {
-    if (buildings[i] == 1) {
-      player.money+=getIncomeValue(buildings[i],"b","w");
-    }
+  for (i=0;i<weeklyProfits.length;i++) {
+    player.money += weeklyProfits[i].profit;
   }
 }
 
 //Collect income for buildings that give income every month
 function collectMonthlyIncome() {
-  for (i=0;i<buildings.length;i++) {
-    if (buildings[i] == 2) {
-      player.money+=getIncomeValue(buildings[i],"b","m");
-    }
+  for (i=0;i<monthlyProfits.length;i++) {
+    player.money += monthlyProfits[i].profit;
   }
 }
 
-function getIncomeValue(no,type,increment) {
-  //Get the type of texture
-  switch(increment) {
-    case "w":
-      switch(type) {
-        case "b":
-          switch(no) {
-            case 1:
-              return 100;
-              break;
-          }
+function getStructureProfitOccurrence(no,type) {
+  switch(type) {
+    case "b":
+      switch(no) {
+        case 1:
+          return weeklyProfits;
+          break;
+        case 2:
+          return monthlyProfits;
           break;
       }
       break;
-    case "m":
-      switch(type) {
-        case "b":
-          switch(no) {
-            case 2:
-              return 2000;
-              break;
-          }
-          break;
+    case "p":
+      switch(no) {
+        case 1:
+          return monthlyProfits;
       }
       break;
   }
+}
 
+function getStructureProfit(no,type) {
+  switch(type) {
+    case "b":
+      switch(no) {
+        case 1:
+          return 100;
+          break;
+        case 2:
+          return 2000;
+          break;
+      }
+      break;
+    case "p":
+      switch(no) {
+        case 1:
+          return -200;
+      }
+      break;
+  }
 }

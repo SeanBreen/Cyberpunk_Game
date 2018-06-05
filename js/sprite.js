@@ -36,6 +36,7 @@ class Building extends Sprite {
   constructor(filename) {
     super(filename);
     this.powered = false;
+    this.profit = 0;
     this.image.src = "assets/"+this.filename+"NoPower.PNG";
     this.lightning = new Image();
     this.lightning.src = "assets/sprites/icons/powerBolt.PNG";
@@ -82,5 +83,6 @@ class Power extends Sprite {
   constructor(filename) {
     super(filename);
     this.type = 0;
+    this.profit = 0;
   }
 }
