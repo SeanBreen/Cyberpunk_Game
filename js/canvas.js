@@ -21,11 +21,7 @@ function clearScreen() {
   ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
 }
 
-// for (i=0;i<level.length;i++) {
-//   level[i] = new Sprite(getTextureName(level[i],"l"));
-// }
-
-//Draw all of the tiles for the level background
+//Draw all of the tiles for the level
 function drawLevel() {
   var startX = initialStartX;
   var startY = initialStartY;

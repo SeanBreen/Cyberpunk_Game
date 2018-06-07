@@ -19,7 +19,7 @@ function checkClickButtons() {
   }
 
   //If within grid, tile isn't locked and no building on it
-  if (withinGrid() && getCurrentTile()[0] != 0 && getCurrentTile()[1] == undefined) {
+  if (withinGrid() && getCurrentTile()[0] != 0 && getCurrentTile()[1] == undefined && getCurrentTile()[2] == 0 && getCurrentTile()[3] == 0) {
     var structure = 0;
     if (player.holding[2] == "r") {
       structure = new Road(getTextureName(player.holding[1],"r"));
