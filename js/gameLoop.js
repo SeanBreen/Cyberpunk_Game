@@ -10,10 +10,7 @@ function draw() {
   clearScreen();
   //Draw everything
   drawLevel(level);
-  drawRoads(roads);
   drawVehicles();
-  drawBuildings(buildings);
-  drawPower(power);
   drawNightBox();
   drawMenu();
   drawPlayer();

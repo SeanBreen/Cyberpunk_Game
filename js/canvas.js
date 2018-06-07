@@ -26,7 +26,7 @@ function clearScreen() {
 // }
 
 //Draw all of the tiles for the level background
-function drawLevel(level) {
+function drawLevel() {
   var startX = initialStartX;
   var startY = initialStartY;
   for (i=0;i<level.length;i++) {
@@ -34,58 +34,24 @@ function drawLevel(level) {
       startY+=tileSize;
       startX = initialStartX;
     }
-    level[i].draw(startX,startY,tileSize,tileSize);
-    startX+=tileSize;
-  }
-}
 
-//Draw the roads for the game
-function drawRoads(roads) {
-  var startX = initialStartX;
-  var startY = initialStartY;
-  for (i=0;i<roads.length;i++) {
-    if (i%10 === 0 && i!=0) {
-      startY+=tileSize;
-      startX = initialStartX;
-    }
-    if (roads[i] !=0){
+    level[i].draw(startX,startY,tileSize,tileSize);
+
+    if (roads[i] != 0) {
       roads[i].draw(startX,startY,tileSize,tileSize,roads[i].rotation);
       roads[i].pos=[startX,startY];
     }
-    startX+=tileSize;
-  }
-}
 
-//Draw the buildings for the game
-function drawBuildings(buildings) {
-  var startX = initialStartX;
-  var startY = initialStartY;
-  for (i=0;i<buildings.length;i++) {
-    if (i%10 === 0 && i!=0) {
-      startY+=tileSize;
-      startX = initialStartX;
-    }
     if (buildings[i] !=0){
       buildings[i].draw(startX,startY-((buildings[i].image.height*stretchRatio)-tileSize),tileSize,buildings[i].image.height*stretchRatio);
       buildings[i].pos=[startX,startY];
     }
-    startX+=tileSize;
-  }
-}
 
-//Draw the power buildings for the game
-function drawPower(power) {
-  var startX = initialStartX;
-  var startY = initialStartY;
-  for (i=0;i<power.length;i++) {
-    if (i%10 === 0 && i!=0) {
-      startY+=tileSize;
-      startX = initialStartX;
-    }
     if (power[i] !=0){
       power[i].draw(startX,startY-((power[i].image.height*stretchRatio)-tileSize),tileSize,power[i].image.height*stretchRatio);
       power[i].pos=[startX,startY];
     }
+
     startX+=tileSize;
   }
 }

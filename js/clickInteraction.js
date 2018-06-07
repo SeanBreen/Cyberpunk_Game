@@ -36,7 +36,11 @@ function checkClickButtons() {
     }
     structure.profit = getStructureProfit(player.holding[1],player.holding[2]);
     changeArrayValue(getArrayPosFromMouse(),structure,player.holding[2]);
-    getStructureProfitOccurrence(player.holding[1],player.holding[2]).push(structure);
+
+    if (player.holding[2] != "r") {
+      getStructureProfitOccurrence(player.holding[1],player.holding[2]).push(structure);
+    }
+
     mergeRoad();
     player.money -= player.holding[0];
     player.holding = [0,0,0];
