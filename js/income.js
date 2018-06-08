@@ -6,13 +6,17 @@ var monthlyProfits = [];
 function collectWeeklyIncome() {
   for (i=0;i<weeklyProfits.length;i++) {
     player.money += weeklyProfits[i].profit;
+    weeklyProfits[i].profitImgPos = weeklyProfits[i].pos[1]-weeklyProfits[i].profitImg.height;
+    animationQueue.push([weeklyProfits[i],1]);
   }
 }
 
 //Collect income for buildings that give income every month
 function collectMonthlyIncome() {
   for (i=0;i<monthlyProfits.length;i++) {
+    monthlyProfits[i].profitImgPos = monthlyProfits[i].pos[1]-monthlyProfits[i].profitImg.height
     player.money += monthlyProfits[i].profit;
+    animationQueue.push([monthlyProfits[i],1]);
   }
 }
 

@@ -16,6 +16,7 @@ function draw() {
   drawPlayer();
   checkHousesForPower();
   drawPowerPlantRange();
+  drawAnimations();
 }
 
 function loop(timestamp) {

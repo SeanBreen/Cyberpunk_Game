@@ -40,6 +40,9 @@ class Building extends Sprite {
     this.image.src = "assets/"+this.filename+"NoPower.PNG";
     this.lightning = new Image();
     this.lightning.src = "assets/sprites/icons/powerBolt.PNG";
+    this.profitImg = new Image();
+    this.profitImg.src = "assets/sprites/icons/moneyPlus.PNG";
+    this.alpha = 1;
   }
 
   turnOn() {
@@ -57,6 +60,17 @@ class Building extends Sprite {
       ctx.drawImage(this.lightning,this.pos[0]+5,this.pos[1]-this.image.height+50,this.lightning.width,this.lightning.height/1.75);
     }
   }
+
+  drawProfit() {
+    ctx.globalAlpha = this.alpha;
+    ctx.drawImage(this.profitImg,this.pos[0]+7,this.profitImgPos,this.profitImg.width,this.profitImg.height);
+    ctx.globalAlpha = 1;
+  }
+
+  resetAlpha() {
+    this.alpha = 1;
+  }
+
 }
 
 class Tile extends Sprite {
@@ -84,5 +98,20 @@ class Power extends Sprite {
     super(filename);
     this.type = 0;
     this.profit = 0;
+    this.profitImg = new Image();
+    this.profitImg.src = "assets/sprites/icons/moneyMinus.PNG";
+    this.profitImgPos = this.pos[1]-this.profitImg.height;
+    this.alpha = 1;
   }
+
+  drawProfit() {
+    ctx.globalAlpha = this.alpha;
+    ctx.drawImage(this.profitImg,this.pos[0]+7,this.profitImgPos,this.profitImg.width,this.profitImg.height);
+    ctx.globalAlpha = 1;
+  }
+
+  resetAlpha() {
+    this.alpha = 1;
+  }
+
 }
