@@ -21,30 +21,37 @@ function checkClickButtons() {
   //If within grid, tile isn't locked and no building on it
   if (withinGrid() && getCurrentTile()[0] != 0 && getCurrentTile()[1] == undefined && getCurrentTile()[2] == 0 && getCurrentTile()[3] == 0) {
     var structure = 0;
-    if (player.holding[2] == "r") {
-      structure = new Road(getTextureName(player.holding[1],"r"));
-      structure.type = 1;
-    }
-    if (player.holding[2] == "b") {
-      structure = new Building(getTextureName(player.holding[1],"b"));
-      generateFamily(getArrayPosFromMouse());
-      updatePopulation();
-    }
-    if (player.holding[2] == "p") {
-      structure = new Power(getTextureName(player.holding[1],"p"));
-      structure.type = player.holding[1];
-    }
-    structure.profit = getStructureProfit(player.holding[1],player.holding[2]);
-    changeArrayValue(getArrayPosFromMouse(),structure,player.holding[2]);
+    if (player.holding != 0 && !drawTilePurchaseBoxVar) {
+      if (player.holding[2] == "r") {
+        structure = new Road(getTextureName(player.holding[1],"r"));
+        structure.type = 1;
+      }
+      if (player.holding[2] == "b") {
+        structure = new Building(getTextureName(player.holding[1],"b"));
+        generateFamily(getArrayPosFromMouse());
+        updatePopulation();
+      }
+      if (player.holding[2] == "p") {
+        structure = new Power(getTextureName(player.holding[1],"p"));
+        structure.type = player.holding[1];
+      }
+      structure.profit = getStructureProfit(player.holding[1],player.holding[2]);
+      changeArrayValue(getArrayPosFromMouse(),structure,player.holding[2]);
 
-    if (player.holding[2] != "r") {
-      getStructureProfitOccurrence(player.holding[1],player.holding[2]).push(structure);
+      if (player.holding[2] != "r") {
+        getStructureProfitOccurrence(player.holding[1],player.holding[2]).push(structure);
+      }
+
+      mergeRoad();
+      player.money -= player.holding[0];
+      player.holding = 0;
+      player.image.src = "";
     }
 
-    mergeRoad();
-    player.money -= player.holding[0];
-    player.holding = [0,0,0];
-    player.image.src = "";
+  } else if (withinGrid() && getCurrentTile()[0] == 0 && player.holding == 0 ){
+    drawTilePurchaseBoxVar = true;
+    tilePurchaseButton = new Button([(window.innerWidth/2)-75,(window.innerHeight/2)+10],"Buy - 200",150,40,1);
+    arrayPurchaseTile = getArrayPosFromMouse();
   }
 
   //Check if user is clicking on speed controls
@@ -59,4 +66,11 @@ function checkClickButtons() {
       speedControlButtons[i].active = true;
     }
   }
+  if (drawTilePurchaseBoxVar) {
+    if (mouse[0] >= tilePurchaseButton.pos[0] && mouse[0] <= tilePurchaseButton.pos[0]+tilePurchaseButton.width && mouse[1] >= tilePurchaseButton.pos[1] && mouse[1] <= tilePurchaseButton.pos[1]+tilePurchaseButton.height && player.holding == 0) {
+      drawTilePurchaseBoxVar = false;
+      buyTile();
+    }
+  }
+
 }

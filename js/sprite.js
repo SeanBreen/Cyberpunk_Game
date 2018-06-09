@@ -32,6 +32,21 @@ class Sprite {
   }
 }
 
+class Tile extends Sprite {
+  constructor(filename) {
+    super(filename);
+    this.type = 0;
+  }
+
+  activateDrawPurchase() {
+    drawBuyTile(this.pos);
+  }
+
+  buyTile() {
+    this.image.src = "assets/level/unlocked.PNG";
+  }
+}
+
 class Building extends Sprite {
   constructor(filename) {
     super(filename);
@@ -71,13 +86,6 @@ class Building extends Sprite {
     this.alpha = 1;
   }
 
-}
-
-class Tile extends Sprite {
-  constructor(filename) {
-    super(filename);
-    this.type = 0;
-  }
 }
 
 class Road extends Sprite {

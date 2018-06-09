@@ -137,7 +137,7 @@ function withinGrid() {
 
 function createInitialWorldObjects() {
   for (i=0;i<level.length;i++) {
-    var tile = new Sprite(getTextureName(level[i],"l"));
+    var tile = new Tile(getTextureName(level[i],"l"));
     tile.type = [level[i]];
     level[i] = tile;
   }
@@ -149,4 +149,10 @@ function createInitialRoadObjects() {
     roads[i] = road;
   }
   mergeRoad();
+}
+
+function buyTile() {
+  player.money-=5000;
+  level[arrayPurchaseTile].type = 1;
+  level[arrayPurchaseTile].buyTile();
 }

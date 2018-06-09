@@ -32,6 +32,7 @@ function drawLevel() {
     }
 
     level[i].draw(startX,startY,tileSize,tileSize);
+    level[i].pos=[startX,startY];
 
     if (roads[i] != 0) {
       roads[i].draw(startX,startY,tileSize,tileSize,roads[i].rotation);

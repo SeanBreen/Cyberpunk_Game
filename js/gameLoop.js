@@ -17,6 +17,9 @@ function draw() {
   checkHousesForPower();
   drawPowerPlantRange();
   drawAnimations();
+  if (drawTilePurchaseBoxVar) {
+    drawTilePurchaseBox();
+  }
 }
 
 function loop(timestamp) {

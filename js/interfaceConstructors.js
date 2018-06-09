@@ -44,6 +44,7 @@ var Button = function(pos,text,width,height,type) {
       ctx.textBaseline = "top";
       ctx.fillStyle = this.style[3];
       ctx.fillText(this.text,this.pos[0],this.pos[1]);
+      ctx.fillRect(this.pos[0],this.pos[1]+this.height+5,this.width,3);
     } else {
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -52,7 +53,6 @@ var Button = function(pos,text,width,height,type) {
       ctx.fillStyle = this.style[3];
       ctx.fillText(this.text,this.pos[0]+(this.width/2),this.pos[1]+(this.height/2));
     }
-    ctx.fillRect(this.pos[0],this.pos[1]+this.height+5,this.width,3);
   }
 }
 //SubMenu button creator
@@ -117,6 +117,19 @@ function drawHighlights() {
       speedControlButtons[i].style[2] = "#f442e8";
     } else {
       speedControlButtons[i].style[2] = "#3fbfe2";
+    }
+  }
+  if (!drawTilePurchaseBoxVar) {
+    for (i=0;i<level.length;i++) {
+      if (mouse[0] >= level[i].pos[0] && mouse[0] <= level[i].pos[0]+tileSize && mouse[1] >= level[i].pos[1] && mouse[1] <= level[i].pos[1]+tileSize && level[i].type == 0) {
+        level[i].activateDrawPurchase();
+      }
+    }
+  } else {
+    if (mouse[0] >= tilePurchaseButton.pos[0] && mouse[0] <= tilePurchaseButton.pos[0]+tilePurchaseButton.width && mouse[1] >= tilePurchaseButton.pos[1] && mouse[1] <= tilePurchaseButton.pos[1]+tilePurchaseButton.height) {
+      tilePurchaseButton.style[2] = "#f442e8";
+    } else {
+      tilePurchaseButton.style[2] = "#3fbfe2";
     }
   }
 }
@@ -305,4 +318,25 @@ function drawPopulationMenu() {
 //To indicate a house needs power, this draws a symbol above it
 function drawBuildingPowerSymbol(pos) {
   buildings[pos].drawPowerSymbol();
+}
+
+//Hover for unpurchased tiles
+function drawBuyTile(pos) {
+  ctx.fillStyle = "#fff";
+  ctx.globalAlpha = 0.2;
+  ctx.fillRect(pos[0],pos[1],tileSize,tileSize);
+  ctx.globalAlpha = 1;
+}
+
+var drawTilePurchaseBoxVar = false;
+var arrayPurchaseTile = undefined;
+var tilePurchaseButton = undefined;
+function drawTilePurchaseBox() {
+  ctx.fillStyle="rgba(23,23,23,0.8)";
+  ctx.fillRect((window.innerWidth/2)-150,(window.innerHeight/2)-75,300,150);
+  ctx.fillStyle = "#fff";
+  ctx.textAlign = "center";
+  ctx.font = "30px Orbitron";
+  ctx.fillText("Purchase Tile",window.innerWidth/2,(window.innerHeight/2)-40);
+  tilePurchaseButton.draw();
 }
