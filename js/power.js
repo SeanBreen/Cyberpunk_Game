@@ -23,7 +23,7 @@ function checkHousesForPower() {
 }
 
 function drawPowerPlantRange() {
-  if (withinGrid() && getCurrentTile()[3] != 0 && player.holding[0] == [0]) {
+  if (withinGrid() && getCurrentTile()[3] != 0 && player.holding == 0) {
     var type = getCurrentTile()[3].type;
     var pos = [getCurrentTile()[3].pos[0],getCurrentTile()[3].pos[1]];
     var diameter = 0;
