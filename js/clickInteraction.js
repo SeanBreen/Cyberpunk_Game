@@ -48,7 +48,7 @@ function checkClickButtons() {
       player.image.src = "";
     }
 
-  } else if (withinGrid() && getCurrentTile()[0] == 0 && player.holding == 0 ){
+  } else if (withinGrid() && getCurrentTile()[0] == 0 && player.holding == 0 && player.money >=5000){
     drawTilePurchaseBoxVar = true;
     tilePurchaseButton = new Button([(window.innerWidth/2)-75,(window.innerHeight/2)+10],"Buy - 5000",150,40,1);
     arrayPurchaseTile = getArrayPosFromMouse();
