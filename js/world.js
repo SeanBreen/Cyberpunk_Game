@@ -156,3 +156,13 @@ function buyTile() {
   level[arrayPurchaseTile].type = 1;
   level[arrayPurchaseTile].buyTile();
 }
+
+function keyEvent(key) {
+  console.log(key);
+  if (key == "Escape") {
+    drawTilePurchaseBoxVar = false;
+    player.holding = 0;
+    player.image.src = "";
+    console.log("DrawTileVar: "+drawTilePurchaseBoxVar+" Player holding:"+player.holding);
+  }
+}

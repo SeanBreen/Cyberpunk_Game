@@ -6,8 +6,11 @@ var ctx = canvas.getContext("2d");
 var mouse = [0,0];
 canvas.addEventListener("click", click,false);
 canvas.addEventListener("mousemove", function(ev) {
-    mouse = [ev.clientX,ev.clientY];
+  mouse = [ev.clientX,ev.clientY];
 });
+document.addEventListener("keydown", function(ev) {
+  keyEvent(ev.key);
+},false);
 //Tile size and position of the game grid on screen
 var tileSize = 80;
 var stretchRatio = tileSize/64;
